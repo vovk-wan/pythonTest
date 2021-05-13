@@ -1,0 +1,13 @@
+BRUCE_WILLIS = 42
+leeloo = 0
+
+input_data = input('Введите строку: ')
+try:
+    leeloo = int(input_data[4])
+
+except ValueError:
+    print('5 элемент, не число!')
+except IndexError:
+    print('5 элемент отсутствует в списке')
+result = BRUCE_WILLIS * leeloo
+print(f'- Leeloo Dallas! Multi-pass № {result}!')

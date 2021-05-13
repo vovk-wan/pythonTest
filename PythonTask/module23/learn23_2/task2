@@ -1,0 +1,39 @@
+import os
+print(os.path.abspath(os.path.join(os.curdir,'ages.txt')))
+
+names_age = ''
+try:
+    print(os.path.getsize(os.path.abspath(os.path.join(os.curdir,'ages.txt'))))
+    file_names_age = open('result.txt', 'r', encoding='utf8')
+    file_names_age.close()
+    print(type(file_names_age))
+    file_ages = open(os.path.abspath(os.path.join(os.curdir,'ages.txt')), 'r', encoding='utf8')
+    for i_line in file_ages:
+        for i_age in i_line.split():
+            if int(i_age) < 14:
+                names_age +=f'Ребёнок, возраст = {i_age}  | '
+            if 14 < int(i_age) < 18:
+                names_age +=f'Подросток, возраст = {i_age}  | '
+            if 18 < int(i_age) < 35:
+                names_age +=f'Взрослый, возраст = {i_age}  | '
+            if 35 < int(i_age) < 48:
+                names_age +=f'Среднего возраста = {i_age}  | '
+            if 48 < int(i_age) < 65:
+                names_age +=f'Пожилой, возраст = {i_age}  | '
+            if 65 < int(i_age) < 95:
+                names_age +=f'Старый, возраст = {i_age}  | '
+            if 65 < int(i_age) > 95:
+                names_age +=f'Долгожитель, возраст = {i_age}  | '
+        names_age +='\n'
+
+    file_ages.close()
+
+
+    if os.path.exists('result.txt'):
+        print('Фаил существует, запись не возможна,  "почему то"')
+    else:
+        file_names_age = open('result.txt', 'w', encoding='utf8')
+        file_names_age.write(names_age)
+        file_names_age.close()
+except (IsADirectoryError):
+    print('Бала попытка открыть файл, но это оказалась директория')
